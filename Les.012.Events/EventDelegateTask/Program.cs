@@ -28,11 +28,28 @@ namespace EventDelegateTask
         public event Action<string> TemperatureChanged;
         public Thermometer() { }
         private int temperature;
+
         public int Temperature
         {
             get => temperature;
-            set => temperature = value;
+            set
+            {
+                if (temperature != value) // Перевіряємо, чи температура дійсно змінилася
+                {
+                    temperature = value;
+                    TemperatureChanged?.Invoke($"Температура змінилася на {temperature}°C"); // Викликаємо подію
+                }
+            }
         }
+
+        public void RaiseEvent(string message)
+        {
+            if (TemperatureChanged != null)
+            {
+                TemperatureChanged(message);
+            }
+        }
+
     }
 
     class TemperatureObserver
