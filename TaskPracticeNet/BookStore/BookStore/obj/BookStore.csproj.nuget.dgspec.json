@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\SK\\source\\repos\\C#\\C-STUDING-MYSELF\\TaskPracticeNet\\BookStore\\BookStore\\BookStore.csproj": {}
   },
   "projects": {
@@ -12,12 +13,29 @@
         "projectPath": "C:\\Users\\SK\\source\\repos\\C#\\C-STUDING-MYSELF\\TaskPracticeNet\\BookStore\\BookStore\\BookStore.csproj",
         "packagesPath": "C:\\Users\\SK\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\SK\\source\\repos\\C#\\C-STUDING-MYSELF\\TaskPracticeNet\\BookStore\\BookStore\\obj\\",
+=======
+    "C:\\Users\\Admin\\source\\repos\\C#\\Projects\\TaskPracticeNet\\BookStore\\BookStore\\BookStore.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Admin\\source\\repos\\C#\\Projects\\TaskPracticeNet\\BookStore\\BookStore\\BookStore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\C#\\Projects\\TaskPracticeNet\\BookStore\\BookStore\\BookStore.csproj",
+        "projectName": "BookStore",
+        "projectPath": "C:\\Users\\Admin\\source\\repos\\C#\\Projects\\TaskPracticeNet\\BookStore\\BookStore\\BookStore.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\source\\repos\\C#\\Projects\\TaskPracticeNet\\BookStore\\BookStore\\obj\\",
+>>>>>>> d2817a6381a9ac03b7009984a0f352cb75ecedb8
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\SK\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> d2817a6381a9ac03b7009984a0f352cb75ecedb8
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -45,7 +63,11 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
+<<<<<<< HEAD
         "SdkAnalysisLevel": "9.0.200"
+=======
+        "SdkAnalysisLevel": "9.0.100"
+>>>>>>> d2817a6381a9ac03b7009984a0f352cb75ecedb8
       },
       "frameworks": {
         "net8.0": {
@@ -85,7 +107,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.103/PortableRuntimeIdentifierGraph.json"
+>>>>>>> d2817a6381a9ac03b7009984a0f352cb75ecedb8
         }
       }
     }

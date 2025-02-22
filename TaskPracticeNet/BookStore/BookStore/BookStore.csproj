@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Remove="Services\**" />
     <Content Remove="Services\**" />
     <EmbeddedResource Remove="Services\**" />
@@ -14,6 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
+=======
+>>>>>>> d2817a6381a9ac03b7009984a0f352cb75ecedb8
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.2">
@@ -22,4 +25,13 @@
     </PackageReference>
   </ItemGroup>
 
+<<<<<<< HEAD
 </Project>
+=======
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
+</Project>
+>>>>>>> d2817a6381a9ac03b7009984a0f352cb75ecedb8

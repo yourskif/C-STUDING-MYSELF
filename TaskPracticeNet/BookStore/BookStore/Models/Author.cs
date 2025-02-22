@@ -1,5 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
+<<<<<<< HEAD
 using System.Collections.Generic;
+=======
+>>>>>>> d2817a6381a9ac03b7009984a0f352cb75ecedb8
 
 namespace BookStore.Models
 {
@@ -20,7 +23,12 @@ namespace BookStore.Models
         [Required(ErrorMessage = "Дата народження є обов’язковою")]
         [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
+<<<<<<< HEAD
 
         public List<Book> Books { get; set; } = new List<Book>();
     }
 }
+=======
+    }
+}
+>>>>>>> d2817a6381a9ac03b7009984a0f352cb75ecedb8

@@ -15,9 +15,14 @@ namespace BookStore.Models
 
         [Required(ErrorMessage = "Жанр є обов’язковим")]
         public GenreEnum Genre { get; set; }
+<<<<<<< HEAD
 
         public int AuthorId { get; set; }
 
         public Author Author { get; set; }
     }
 }
+=======
+    }
+}
+>>>>>>> d2817a6381a9ac03b7009984a0f352cb75ecedb8

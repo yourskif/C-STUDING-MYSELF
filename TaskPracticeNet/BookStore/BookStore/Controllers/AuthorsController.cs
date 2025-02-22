@@ -1,14 +1,23 @@
+<<<<<<< HEAD
 ﻿using BookStore.Models;
 using BookStore.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging; // Додано для логування
 using System.Text.Json;
 using System.Threading.Tasks;
+=======
+﻿using BookStore;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using BookStore.Data;
+using BookStore.Models;
+>>>>>>> d2817a6381a9ac03b7009984a0f352cb75ecedb8
 
 namespace BookStore.Controllers
 {
     public class AuthorsController : Controller
     {
+<<<<<<< HEAD
         private readonly IAuthorRepository _authorRepository;
         private readonly IBookRepository _bookRepository;
         private readonly ILogger<AuthorsController> _logger; // Додано логгер
@@ -42,6 +51,13 @@ namespace BookStore.Controllers
                 return NotFound();
             }
             return View(author);
+=======
+        private readonly ApplicationDbContext _context;
+
+        public AuthorsController(ApplicationDbContext context)
+        {
+            _context = context;
+>>>>>>> d2817a6381a9ac03b7009984a0f352cb75ecedb8
         }
 
         public IActionResult Create()
@@ -50,6 +66,7 @@ namespace BookStore.Controllers
         }
 
         [HttpPost]
+<<<<<<< HEAD
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Author author)
         {
@@ -165,3 +182,17 @@ namespace BookStore.Controllers
         }
     }
 }
+=======
+        public IActionResult Create(Author author)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Authors.Add(author);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(author);
+        }
+    }
+}
+>>>>>>> d2817a6381a9ac03b7009984a0f352cb75ecedb8

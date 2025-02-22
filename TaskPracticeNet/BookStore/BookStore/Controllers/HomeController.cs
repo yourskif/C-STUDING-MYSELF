@@ -29,4 +29,8 @@ namespace BookStore.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d2817a6381a9ac03b7009984a0f352cb75ecedb8

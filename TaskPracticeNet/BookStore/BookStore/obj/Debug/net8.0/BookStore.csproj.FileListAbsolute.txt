@@ -172,6 +172,7 @@ C:\Users\Admin\source\repos\C#\Projects\TaskPracticeNet\BookStore\BookStore\bin\
 C:\Users\Admin\source\repos\C#\Projects\TaskPracticeNet\BookStore\BookStore\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\Admin\source\repos\C#\Projects\TaskPracticeNet\BookStore\BookStore\obj\Debug\net8.0\BookStore.csproj.Up2Date
 C:\Users\Admin\source\repos\C#\Projects\TaskPracticeNet\BookStore\BookStore\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+<<<<<<< HEAD
 C:\Users\SK\source\repos\C#\C-STUDING-MYSELF\TaskPracticeNet\BookStore\BookStore\obj\Debug\net8.0\BookStore.csproj.AssemblyReference.cache
 C:\Users\SK\source\repos\C#\C-STUDING-MYSELF\TaskPracticeNet\BookStore\BookStore\obj\Debug\net8.0\BookStore.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\SK\source\repos\C#\C-STUDING-MYSELF\TaskPracticeNet\BookStore\BookStore\obj\Debug\net8.0\BookStore.AssemblyInfoInputs.cache
@@ -346,3 +347,5 @@ C:\Users\SK\source\repos\C#\C-STUDING-MYSELF\TaskPracticeNet\BookStore\BookStore
 c:\Users\SK\source\repos\C#\C-STUDING-MYSELF\TaskPracticeNet\BookStore\BookStore\obj\Debug\net8.0\BookStore.pdb
 C:\Users\SK\source\repos\C#\C-STUDING-MYSELF\TaskPracticeNet\BookStore\BookStore\obj\Debug\net8.0\BookStore.genruntimeconfig.cache
 C:\Users\SK\source\repos\C#\C-STUDING-MYSELF\TaskPracticeNet\BookStore\BookStore\obj\Debug\net8.0\ref\BookStore.dll
+=======
+>>>>>>> d2817a6381a9ac03b7009984a0f352cb75ecedb8
