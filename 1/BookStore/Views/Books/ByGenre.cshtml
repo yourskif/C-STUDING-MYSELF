@@ -1,0 +1,12 @@
+﻿@model IEnumerable<BookStore.Models.Book>
+
+<h2>Книги жанру @Model.FirstOrDefault()?.Genre</h2>
+
+<ul>
+    @foreach (var book in Model)
+    {
+        <li>@book.Title (@book.PageCount сторінок, Автор: @book.Author?.LastName @book.Author?.FirstName)</li>
+    }
+</ul>
+
+<a asp-action="Index">Повернутися до списку авторів</a>

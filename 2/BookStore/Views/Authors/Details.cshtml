@@ -1,0 +1,175 @@
+﻿@model BookStore.Models.Author
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деталі автора</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between mb-3">
+            <h2>Деталі автора</h2>
+            <div>
+                <a href="@Url.Action("Index", "Authors")" class="btn btn-secondary me-2">Автори</a>
+                <a href="@Url.Action("Index", "Books", new { authorId = Model.Id })" class="btn btn-secondary">Книги</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">@Model.LastName @Model.FirstName @(Model.MiddleName ?? "")</h4>
+                <dl class="row">
+                    <dt class="col-sm-2">Прізвище</dt>
+                    <dd class="col-sm-10">@Model.LastName</dd>
+                    <dt class="col-sm-2">Ім’я</dt>
+                    <dd class="col-sm-10">@Model.FirstName</dd>
+                    <dt class="col-sm-2">По батькові</dt>
+                    <dd class="col-sm-10">@(Model.MiddleName ?? "Не вказано")</dd>
+                    <dt class="col-sm-2">Дата народження</dt>
+                    <dd class="col-sm-10">@Model.BirthDate.ToShortDateString()</dd>
+                </dl>
+            </div>
+        </div>
+
+        <h3 class="mt-4">Книги</h3>
+        <table class="table table-striped" id="booksTable">
+            <thead>
+                <tr>
+                    <th>Назва</th>
+                    <th>Жанр</th>
+                    <th>Кількість сторінок</th>
+                    <th>Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var book in Model.Books)
+                {
+                    <tr>
+                        <td>@book.Title</td>
+                        <td>@book.Genre</td>
+                        <td>@book.PageCount</td>
+                        <td>
+                            <a href="@Url.Action("Details", "Books", new { id = book.Id })" class="btn btn-info btn-sm">Деталі</a>
+                            <a href="@Url.Action("Edit", "Books", new { id = book.Id })" class="btn btn-warning btn-sm ms-1">Редагувати</a>
+                            <a href="@Url.Action("Delete", "Books", new { id = book.Id })" class="btn btn-danger btn-sm ms-1">Видалити</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addBookModal">Додати книгу</button>
+
+        <!-- Модальне вікно для додавання книги -->
+        <div class="modal fade" id="addBookModal" tabindex="-1" aria-labelledby="addBookModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addBookModalLabel">Додати книгу</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addBookForm">
+                            <input type="hidden" id="authorId" value="@Model.Id" />
+                            <div class="form-group">
+                                <label for="title">Назва</label>
+                                <input type="text" class="form-control" id="title" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="pageCount">Кількість сторінок</label>
+                                <input type="number" class="form-control" id="pageCount" required min="1" max="5000" />
+                            </div>
+                            <div class="form-group">
+                                <label for="genre">Жанр</label>
+                                <select class="form-control" id="genre" required>
+                                    @foreach (var genre in Enum.GetValues(typeof(GenreEnum)))
+                                    {
+                                        string genreString = genre.ToString();
+                                        <option value="@genreString">@genreString</option>
+                                    }
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
+                        <button type="button" class="btn btn-primary" id="addBookTemp">Додати тимчасово</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form id="saveAuthorForm" asp-action="Details" method="post">
+            <input type="hidden" name="authorId" value="@Model.Id" />
+            <input type="hidden" id="tempBooks" name="tempBooks" value="" />
+            <button type="submit" class="btn btn-success mt-3">Зберегти</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            let tempBooks = [];
+
+            $("#addBookTemp").click(function () {
+                var book = {
+                    AuthorId: $("#authorId").val(),
+                    Title: $("#title").val(),
+                    PageCount: $("#pageCount").val(),
+                    Genre: $("#genre").val()
+                };
+
+                if (book.Title && book.PageCount && book.Genre) {
+                    tempBooks.push(book);
+                    $("#booksTable tbody").append(
+                        `<tr>
+                            <td>${book.Title}</td>
+                            <td>${book.Genre}</td>
+                            <td>${book.PageCount}</td>
+                            <td>
+                                <button class="btn btn-danger btn-sm remove-book" data-index="${tempBooks.length - 1}">Видалити</button>
+                            </td>
+                        </tr>`
+                    );
+                    $("#addBookForm")[0].reset();
+                    $("#addBookModal").modal('hide');
+                } else {
+                    alert("Заповніть усі поля!");
+                }
+            });
+
+            $(document).on("click", ".remove-book", function () {
+                const index = $(this).data("index");
+                tempBooks.splice(index, 1);
+                $(this).closest("tr").remove();
+                // Оновлюємо індекси для кнопок видалення
+                $("#booksTable tbody tr").each(function (i) {
+                    $(this).find(".remove-book").data("index", i).attr("data-index", i);
+                });
+            });
+
+            $("#saveAuthorForm").submit(function (e) {
+                e.preventDefault();
+                $("#tempBooks").val(JSON.stringify(tempBooks));
+                $.ajax({
+                    url: '@Url.Action("SaveBooks", "Authors")',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function () {
+                        alert("Дані збережено!");
+                        tempBooks = []; // Очищаємо тимчасові дані
+                        location.reload(); // Перезавантажуємо сторінку для оновлення
+                    },
+                    error: function () {
+                        alert("Помилка при збереженні даних");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
